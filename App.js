@@ -901,3 +901,4 @@ root.render(<AppLayout/>);
 //passing an argument to a function is called as a prop
 //when you want to pass dynamically data to component yoy pass it as a prop
 //config driven UI=the ui is driven by data ie config and the config comes from backend that is why we see different data in differrent locations
+//whenever we use map function it is very necessary to use keys
