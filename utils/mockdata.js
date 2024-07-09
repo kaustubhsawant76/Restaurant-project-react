@@ -1,42 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import myImage from "./download (19).png";
 
-
-
-const Header=()=>{
-    return (
-        <div className="header">
-            <div className="logo-container">
-                 <img className="logo" src={myImage} height="100px" width="100px"/>    {/*img can also uploaded by <img src=""/>  src=link of the image */}
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    );
-}
-
-
-const RestaurantCard=(props)=>{
-    const{resData}=props;
-    const{name,cuisines,avgRating,cloudinaryImageId}=resData?.info;
-    const{deliveryTime}=resData?.info.sla;
-    return (
-        <div className="res-card" style={{backgroundColor:"#f0f0f0"}}>
-            <img className="image" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId }/>
-         <h3>{name}</h3>
-         <h4>{cuisines.join(",")}</h4>
-         <h5>{avgRating} stars</h5>
-         <h5>{deliveryTime} minutes</h5>
-        </div>
-    );
-}
 const resList=[{
     "info": {
       "id": "898222",
@@ -869,38 +831,5 @@ const resList=[{
     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
   }]
 
-const Body=()=>{
-    return (
-        <div className="body">
-            <div className="search">search</div>
-            <div className="restaurant-container">
-             {resList.map((restaurant)=>(<RestaurantCard key={restaurant.info.id} resData={restaurant} />))}
-             
-            </div>
-        </div>
 
-    );
-}
-
-
-
-const AppLayout=()=>{
-    return (
-    <div className="app">
-     <Header/>
-     <Body/>
-    </div>
-    );
-}
-
-const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>);
-
-
-//css can also be passed inline like eg <div style={}></div>  where {} sould be js object and it that you write css
-//passing an argument to a function is called as a prop
-//when you want to pass dynamically data to component yoy pass it as a prop
-//config driven UI=the ui is driven by data ie config and the config comes from backend that is why we see different data in differrent locations
-//whenever we use map function it is very necessary to use keys
-//index should be not used as keys
-//in worst case if there is no id then you can use index as keys as last option
+  export default resList;
