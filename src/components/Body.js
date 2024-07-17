@@ -2,6 +2,7 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../../utils/mockdata";//use mockdata when live api is not used
 import { useState,useEffect } from "react";
+import Shimmer from "./shimmer";
 
 
 
@@ -25,6 +26,10 @@ const Body = () => {
    
  };
   
+ if(resData.length===0){
+  return <Shimmer/>
+
+ }
   return (
     <div className="body">
       <div className="filter">
