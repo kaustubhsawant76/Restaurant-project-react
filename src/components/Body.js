@@ -26,6 +26,7 @@ const Body = () => {
    
  };
   
+ //conditional rendering
  if(resData.length===0){
   return <Shimmer/>
 
