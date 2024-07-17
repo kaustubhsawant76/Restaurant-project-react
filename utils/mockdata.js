@@ -1430,7 +1430,7 @@ const resList = [ {
       "Beverages",
       "Jain"
     ],
-    "avgRating": 4.5,
+    "avgRating": 3.5,
     "veg": true,
     "parentId": "2484",
     "avgRatingString": "4.5",
@@ -1539,7 +1539,7 @@ const resList = [ {
       "Pastas",
       "Italian"
     ],
-    "avgRating": 4.3,
+    "avgRating": 3.3,
     "veg": true,
     "parentId": "21911",
     "avgRatingString": "4.3",
