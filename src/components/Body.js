@@ -8,6 +8,8 @@ import Shimmer from "./shimmer";
 
 const Body = () => {
   const [resData,setRestlist]=useState([]);
+  const [filteredRes,setFilteredRes]=useState([]);
+  const [searchText,setSearchText]=useState("");
 
   useEffect(
     ()=>{
@@ -22,18 +24,37 @@ const Body = () => {
    const json= await data.json();
   //  console.log(json);
    setRestlist(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   
+   setFilteredRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
    
  };
   
  //conditional rendering
- if(resData.length===0){
-  return <Shimmer/>
+//  if(resData.length===0){
+//   return <Shimmer/>
 
- }
-  return (
+ //}
+ //below we have used single ternary operator for return
+  return resData.length===0? <Shimmer/>: (
     <div className="body">
       <div className="filter">
+      <div className="search">
+        <input type="text" className="search-btn" value={searchText} 
+          onChange={(e)=>{
+            setSearchText(e.target.value);
+          }}
+        />
+        <button className="searchbtn"
+        onClick={()=>{
+          let filteredRestaurant=resData.filter(
+            (rest)=>rest.info.name.toLowerCase().includes(searchText.toLowerCase())
+            
+          );
+          setFilteredRes(filteredRestaurant);
+          
+        }}
+        >Search</button>
+      </div>
+      
         <button
           className="filter-btn"
           onClick={() => {
@@ -42,14 +63,14 @@ const Body = () => {
                  
              );
              
-             setRestlist(filteredList);
+             setFilteredRes(filteredList);
            }}
         >
           Top rated Restaurants
         </button>
       </div>
       <div className="restaurant-container">
-        {resData.map((restaurant) => (
+        {filteredRes.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
@@ -63,7 +84,7 @@ export default Body;
 //hooks are required to make changes in the ui 
 //useState()=superpowerful state variables in react
 //useEffect()
-
+//whenever state variable updates react triggers a reconcilliation cycle(re-renders the component)
 
 
 

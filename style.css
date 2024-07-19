@@ -38,9 +38,11 @@
     }
     .filter-btn
     {
-padding: 10px;
-margin: 10px;
+padding: 0px;
+margin-left: 36px;
 cursor:pointer;
+margin-top: 8px;
+height: 24px;
 
 
     }
@@ -60,4 +62,18 @@ cursor:pointer;
         padding-top: 30px;
     }
 
+    .button{
+       padding: 20px; 
+        margin-left: 5px;
+        height: 50px;
+        cursor: pointer;
+    }
     
+    .searchbtn{
+        margin-left: 5px;
+    }
+
+
+    .filter{
+      display: flex;  
+    }
