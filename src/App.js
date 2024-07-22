@@ -2,18 +2,42 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet/>
     </div>
   );
 };
 
+const appRouter=createBrowserRouter([
+  {
+    path:"/",
+    element:<AppLayout/>,
+    children:[
+      {
+        path:"/",
+        element:<Body/>
+      },
+  {
+    path:"/about",
+    element:<About/>
+  },
+  {
+    path:"/contact",
+    element:<Contact/>
+  }],
+errorElement:<Error/>}
+])
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter}/>);
 
 //css can also be passed inline like eg <div style={}></div>  where {} sould be js object and it that you write css
 //passing an argument to a function is called as a prop
@@ -24,3 +48,19 @@ root.render(<AppLayout />);
 //in worst case if there is no id then you can use index as keys as last option
 //src folder is created to keep source code in it and keep components in seperate file
 //use .js or .jsx extension while saving the file both are the same no difference
+// createBrowserRouter is used to create routing configuration
+// RouterProvider is used for rendering by giving path to it 
+// both createBrowserRouter and RouterProvider are imported from react-router-dom
+//rafce is shortcut for export level functions  in vs code
+//by default router has error page after entering wrong url address
+//but we can add new error page by errorElement 
+//useRouteError is a hook which cathches specific data of error in the form of object
+//it is declared in normal variable
+//inorder to keep header intact we can use child routes create it in root element
+//react-router-dom gives us Outlet for calling chilren routes as component 
+//and according to children routes url the component is called
+//link component imported from dom is used in place of anchor tag 
+//link doesnot refreshes the whole page but only specific compoenent
+//that is why it is known as SPA[single page application]
+//there are two types of routing 1)server side routing=which is used in old apps eg about.html gets called and the entire website is reloaded
+//2)client side rendering-spa applications,page doesnot reloads only coponent is reloaded
