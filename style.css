@@ -15,7 +15,7 @@
 
     .res-card{
         
-        width: 400px;
+        width: 390px;
         padding: 5px;
         margin: 20px;
     }
@@ -30,6 +30,7 @@
         display: flex;
         flex-wrap: wrap;
         margin: 50px;
+        margin-left: 70px;
         
     }
     .image{
