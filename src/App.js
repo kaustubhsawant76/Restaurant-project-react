@@ -38,7 +38,7 @@ const appRouter=createBrowserRouter([
   path:"/restaurants/:resId",
   element:<RestaurantMenu/>
 }],
-errorElement:<Error/>}
+errorElement:<Error/>,}
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
