@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import resList from "../../utils/mockdata";//use mockdata when live api is not used
 import { useState,useEffect } from "react";
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 
 
 
@@ -72,7 +73,11 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {filteredRes.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link 
+          key={restaurant.info.id}
+          to={"/restaurants/"+restaurant.info.id}>
+          <RestaurantCard  resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
