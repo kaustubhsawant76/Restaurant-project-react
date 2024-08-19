@@ -3,4 +3,4 @@ export const CDN_URL =
 
 //the above is an example of named export if there are more than one elements to export then we use named export
 
-export const MENU_API="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId="
+export const MENU_API="https://corsproxy-la3g.onrender.com/full/?url=https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId="

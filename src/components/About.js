@@ -1,16 +1,39 @@
 import User from "./User";
 import UserClass from "./UserClass";
-const About=()=>
-{
-    return (
-        <div>
-            <h1>this is about</h1>
-            {/* <User name={"Kaustubh sawant (function)"}/>  */}
+import {Component} from "react";  //destructured
 
-            <UserClass name={"Kaustubh Sawant (class)"} Location={"Mumbai (Class)"}/>
-        </div>
-    )
+class About extends Component{
+    constructor(props){
+        super(props);
+        console.log("parent Constructor");
+        
+    }
+
+    componentDidMount(){
+        console.log("parent Component did mount");
+        
+    }
+
+    render(){
+        console.log("parent render");
+        
+        return (
+            
+            
+            <div>
+                <h1>this is about</h1>
+                {/* <User name={"Kaustubh sawant (function)"}/>  */}
+    
+                <UserClass name={"Kaustubh Sawant (class)"} Location={"Mumbai (Class)"}/>
+            </div>
+        )
+    
+    }
 }
+
+
 
 export default About;
 //the above example shows props passing in functional components as well as class based components
+//the below shows the sequence of execution of the class based componrnrt life  cycle
+//1)parent Constructor 2)parent render 3)child constructor 4)child render 5)child component did mount 6)parent Component did mount

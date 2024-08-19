@@ -3,13 +3,22 @@ import React from "react";
 class UserClass extends React.Component{
     constructor(props){
         super(props);
+        console.log("child constructor");
+        
         this.state={
             count:0,
             count2:1,
         };
         
     }
+
+    componentDidMount(){
+        console.log("child component did mount");
+        
+    }
     render(){
+        console.log("child render");
+        
        const {name,Location}=this.props;
        const {count}=this.state;
         return(
@@ -17,6 +26,7 @@ class UserClass extends React.Component{
             <h1>Count:{count}</h1>
             <button 
             onClick={()=>{
+                //never update state variables directly
                 this.setState({
                     count:this.state.count + 1,
                 });

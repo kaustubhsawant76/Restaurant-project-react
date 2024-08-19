@@ -57,9 +57,10 @@ height: 24px;
     }
     .card-container
     {
+        padding: 10px;
         display: flex;
         flex-wrap: wrap;
-        margin: 75px;
+        margin: 50px;
         padding-top: 30px;
     }
 
