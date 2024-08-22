@@ -5,17 +5,18 @@ import {Component} from "react";  //destructured
 class About extends Component{
     constructor(props){
         super(props);
-        console.log("parent Constructor");
+        // console.log("parent Constructor");
         
     }
 
     componentDidMount(){
-        console.log("parent Component did mount");
+        
+        // console.log("parent Component did mount");
         
     }
 
     render(){
-        console.log("parent render");
+        // console.log("parent render");
         
         return (
             
