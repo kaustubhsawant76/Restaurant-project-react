@@ -3,7 +3,7 @@ import React from "react";
 class UserClass extends React.Component{
     constructor(props){
         super(props);
-         console.log("constructor");
+        //  console.log("constructor");
         
         this.state={
             userInfo:{
@@ -16,11 +16,11 @@ class UserClass extends React.Component{
     }
 
     async componentDidMount(){
-         console.log("component did mount");
+        //  console.log("component did mount");
         //this is used to make API call just like useEffect hook in functional component
   const data=await fetch("https://api.github.com/users/kaustubhsawant76");
   const json=await data.json();
-  console.log(json);
+//   console.log(json);
   this.setState({
     userInfo:json,
   })
@@ -28,17 +28,17 @@ class UserClass extends React.Component{
     }
 
     componentDidUpdate(){
-        console.log("componrnt updated");
+        // console.log("componrnt updated");
         
     }
 
     componentWillUnmount(){
-        console.log("component unmounted");
+        // console.log("component unmounted");
         
     }
         
     render(){
-        console.log("render");
+        // console.log("render");
         
        const {name,location,avatar_url}=this.state.userInfo;
     //    const {count}=this.state;
