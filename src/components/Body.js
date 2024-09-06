@@ -45,14 +45,14 @@ const Body = () => {
  //below we have used single ternary operator for return
   return resData.length===0? <Shimmer/>: (
     <div className="body">
-      <div className="filter">
-      <div className="search">
-        <input type="text" className="search-btn" value={searchText} 
+      <div className="flex">
+      <div className="search m-4 p-4">
+        <input type="text" className=" border border-solid border-black" value={searchText} 
           onChange={(e)=>{
             setSearchText(e.target.value);
           }}
         />
-        <button className="searchbtn"
+        <button className="p-2 bg-green-100 m-2 rounded-lg"
         onClick={()=>{
           let filteredRestaurant=resData.filter(
             (rest)=>rest.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -65,7 +65,7 @@ const Body = () => {
       </div>
       
         <button
-          className="filter-btn"
+          className="p-2 bg-gray-100 m-2 h-10 mt-10 rounded-lg"
           onClick={() => {
             let filteredList= resData.filter(
                (rest) =>rest.info.avgRating > 4.4
@@ -78,7 +78,7 @@ const Body = () => {
           Top rated Restaurants
         </button>
       </div>
-      <div className="restaurant-container">
+      <div className="flex flex-wrap">
         {filteredRes.map((restaurant) => (
           <Link 
           key={restaurant.info.id}
