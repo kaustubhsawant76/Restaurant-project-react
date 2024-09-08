@@ -1,5 +1,5 @@
 
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{withPromotedOffers} from "./RestaurantCard";
 import resList from "../../utils/mockdata";//use mockdata when live api is not used
 import { useState,useEffect } from "react";
 import Shimmer from "./shimmer";
@@ -14,6 +14,9 @@ const Body = () => {
   const [filteredRes,setFilteredRes]=useState([]);
   const [searchText,setSearchText]=useState("");
 
+  const RestaurantCardPromoted=withPromotedOffers(RestaurantCard);
+  // console.log(resData);
+  
   useEffect(
     ()=>{
       
@@ -83,6 +86,7 @@ const Body = () => {
           <Link 
           key={restaurant.info.id}
           to={"/restaurants/"+restaurant.info.id}>
+          {/* {restaurant.data.promoted ? (<RestaurantCardPromoted resData={restaurant}/>):(<RestaurantCard  resData={restaurant} />)} */}
           <RestaurantCard  resData={restaurant} />
           </Link>
         ))}

@@ -87,3 +87,4 @@ root.render(<RouterProvider router={appRouter}/>);
 //that is why it is known as SPA[single page application]
 //there are two types of routing 1)server side routing=which is used in old apps eg about.html gets called and the entire website is reloaded
 //2)client side rendering-spa applications,page doesnot reloads only coponent is reloaded
+//Higher order component is a function which takes a component and returns a component
