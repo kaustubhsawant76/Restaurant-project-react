@@ -1,4 +1,4 @@
-import React, { lazy,Suspense } from "react";
+import React, { lazy,Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,6 +8,7 @@ import Error from "./components/Error";
 //import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 //import Grocery from "./components/Grocery";
+import UserContext from "../utils/UserContext";
 
 const Grocery=lazy(()=>import("./components/Grocery"))
 const Contact=lazy(()=>import("./components/Contact"))
@@ -23,11 +24,23 @@ const RestaurantMenu=lazy(()=>import("./components/RestaurantMenu"))
 //reduced website loading time from 50ms to 10ms using code splitting
 
 const AppLayout = () => {
+  const[userName,setUserName]=useState();
+
+  //Authentication
+  useEffect(()=>{
+    const data={
+      name:"Kaustubh Sawant",
+    };
+    setUserName(data.name);
+
+  },[]);
   return (
+    <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
     <div className="app">
       <Header />
       <Outlet/>
     </div>
+    </UserContext.Provider>
   );
 };
 
@@ -88,3 +101,12 @@ root.render(<RouterProvider router={appRouter}/>);
 //there are two types of routing 1)server side routing=which is used in old apps eg about.html gets called and the entire website is reloaded
 //2)client side rendering-spa applications,page doesnot reloads only coponent is reloaded
 //Higher order component is a function which takes a component and returns a component
+//context api is used to avoid prop drilling
+//prop drilling means sending props to nested components at many levels
+//instead we can use context api to create a centralized object and use whereever we want
+//it casn be used in functional components with the help of useContext hook
+//in class based components it can be used with the help of consumer component
+//it can be also used in functional components with provider component
+//provider can be wrapped with many components and we can provide different context for them
+//redux is not mandatory
+//redux is used in large scale apps and contexp api is used in small scale apps

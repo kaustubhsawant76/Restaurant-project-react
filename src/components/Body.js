@@ -5,6 +5,8 @@ import { useState,useEffect } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/Hooks/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../../utils/UserContext";
 
 
 
@@ -46,6 +48,7 @@ const Body = () => {
 
  //}
  //below we have used single ternary operator for return
+ const {setUserName,loggedInUser}=useContext(UserContext);
   return resData.length===0? <Shimmer/>: (
     <div className="body">
       <div className="flex">
@@ -65,6 +68,8 @@ const Body = () => {
           
         }}
         >Search</button>
+
+        
       </div>
       
         <button
@@ -80,6 +85,15 @@ const Body = () => {
         >
           Top rated Restaurants
         </button>
+      <div> 
+      <label className="mx-4">Username :</label>
+      <input className="border border-black my-11 mx-0 p-1"
+        value={loggedInUser} 
+          onChange={(e)=>
+            setUserName(e.target.value)
+          }
+      />
+      </div> 
       </div>
       <div className="flex flex-wrap">
         {filteredRes.map((restaurant) => (

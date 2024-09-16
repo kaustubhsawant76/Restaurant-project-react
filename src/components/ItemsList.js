@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 
 const Itemslist=({items})=>{
-    console.log(items);
+   // console.log(items);
     
     return(
         <div>

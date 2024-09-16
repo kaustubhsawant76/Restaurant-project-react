@@ -1,20 +1,24 @@
 import myImage from "../../foodapplogo.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/Hooks/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 const Header = () => {
 
   const [values,setValue1]=useState("login");
   const onlineStatus=useOnlineStatus();
+  const data=useContext(UserContext);
+  //console.log(data);
+  
 
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg mb-2 h-24 sm:bg-yellow-50 lg:bg-green-50">
+    <div className="flex justify-between bg-pink-100 shadow-lg mb-2 h-24 sm:bg-yellow-50  lg:bg-green-50">
       <div className="logo-container">
-        <img className="w-40 h-24" src={myImage}  />
+        <img className="w-40 h-24  " src={myImage}  />
     
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <ul className="flex p-7 m-7 space-x-6 " >
          <li>Online Status:{onlineStatus ? "✅":"🔴"}</li>
           <li><Link to="/">Home</Link></li>
@@ -29,6 +33,7 @@ const Header = () => {
             setValue1("login")
           }}
           >{values}</button> </li>
+          <li className="font-bold">{data.loggedInUser}</li>
         </ul>
       </div>
     </div>
