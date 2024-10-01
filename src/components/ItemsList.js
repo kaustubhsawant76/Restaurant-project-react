@@ -1,11 +1,20 @@
 import { CDN_URL } from "../../utils/constants"; //named import
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { addItem } from "../../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 
 
 const Itemslist=({items})=>{
    // console.log(items);
-    
+  
+   const dispatch = useDispatch();
+
+   const handleAddItem = (item) => {
+     // Dispatch an action
+     dispatch(addItem(item));
+   };
+
     return(
         <div>
          {items.map((item)=>(
@@ -20,7 +29,7 @@ const Itemslist=({items})=>{
                    </div>
                    <div className="w-3/12 p-4 ">
               
-               <div className="absolute"> <button className="p-2 mx-10 my-16 rounded-lg bg-white shadow-lg font-bold text-green-700  ">ADD +</button> </div>
+               <div className="absolute"> <button className="p-2 mx-10 my-16 rounded-lg bg-white shadow-lg font-bold text-green-700  "   onClick={() => handleAddItem(item)}  >ADD +</button> </div>
                <LazyLoadImage  src={CDN_URL + item.card.info.imageId} className="w-full" />
                 </div>
            </div> 

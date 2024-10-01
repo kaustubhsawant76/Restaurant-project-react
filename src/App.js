@@ -9,7 +9,10 @@ import Error from "./components/Error";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 //import Grocery from "./components/Grocery";
 import UserContext from "../utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../utils/appStore";
 
+const Cart=lazy(()=>import("./components/Cart"))
 const Grocery=lazy(()=>import("./components/Grocery"))
 const Contact=lazy(()=>import("./components/Contact"))
 const About=lazy(()=>import("./components/About"))
@@ -35,12 +38,14 @@ const AppLayout = () => {
 
   },[]);
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
     <div className="app">
       <Header />
       <Outlet/>
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -64,6 +69,10 @@ const appRouter=createBrowserRouter([
   {
     path:"/grocery",
     element:<Suspense fallback={<h1>Loading .......</h1>}><Grocery/></Suspense> //fallback is what should be rendered before loadimg suspense component
+  },
+  {
+    path:"/cart",
+    element:<Suspense fallback={<h1>Loading .......</h1>}><Cart/></Suspense> //fallback is what should be rendered before loadimg suspense component
   },
 {
   path:"/restaurants/:resId",
