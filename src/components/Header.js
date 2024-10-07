@@ -1,9 +1,10 @@
-import myImage from "../../foodapplogo.png";
+//import myImage from "../../public/foodapplogo.png";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/Hooks/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
 import { useSelector } from "react-redux";
+
 
 const Header = () => {
 
@@ -15,11 +16,14 @@ const Header = () => {
   //Selector is a hook 
   //Subscribing to the store using selector
   const cartItems =useSelector((store) => store.cart.dishes);
+  const imageUrl = new URL('../../public/foodapplogo.png', import.meta.url).href;
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg mb-2 h-24 sm:bg-yellow-50  lg:bg-green-50">
       <div className="logo-container">
-        <img className="w-40 h-24  " src={myImage}  />
+      {/* <img  src={new URL('../../public/foodapplogo.png', import.meta.url)} alt="App Logo" className="w-40 h-24" /> */}
+         {/* <img className="w-40 h-24  " src={myImage} />  */}
+          <img className="w-40 h-24  " src={imageUrl} /> 
     
       </div>
       <div className="flex items-center ">
